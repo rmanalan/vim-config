@@ -36,7 +36,7 @@ ruby << RUBY
   require 'fuzzy_file_finder'
 RUBY
 
-  ruby def finder; @finder ||= FuzzyFileFinder.new; end
+  ruby def finder; @finder ||= FuzzyFileFinder.new(".",50000); end
 
   let g:FuzzyFinderMode.TextMate = copy(g:FuzzyFinderMode.Base)
 
