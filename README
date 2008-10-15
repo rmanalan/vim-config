@@ -1,0 +1,10 @@
+This is my collection of Vim plugins and configuration.  I use it primarily for Ruby on Rails development. It includes everything you need for Rails dev (JS, HTML, CSS included). It also includes Jamis’ supercool fuzzy_finder_textmate plugin. Just do a:
+
+git clone git@github.com:manalang/vim-config.git
+
+Then:
+
+mv vim-config ~/.vim 
+mv ~/.vim/.vimrc ~/.vimrc
+
+Enjoy!
