@@ -25,18 +25,56 @@ command! -bang -narg=? -complete=file   FuzzyFinderTextMate   call FuzzyFinderTe
 
 function! InstantiateTextMateMode() "{{{
 ruby << RUBY
-  $LOAD_PATH << "#{ENV['HOME']}/.vim/ruby"
-
   begin
-    require 'rubygems'
-    gem 'fuzzy_file_finder'
+    require "#{ENV['HOME']}/.vim/ruby/fuzzy_file_finder"
   rescue LoadError
-  end
+    begin
+      require 'rubygems'
+      begin
+        gem 'fuzzy_file_finder'
+      rescue Gem::LoadError
+        gem 'jamis-fuzzy_file_finder'
+      end
+    rescue LoadError
+    end
 
-  require 'fuzzy_file_finder'
+    require 'fuzzy_file_finder'
+  end
 RUBY
 
-  ruby def finder; @finder ||= FuzzyFileFinder.new(".",50000); end
+  " Configuration option: g:fuzzy_roots
+  " Specifies roots in which the FuzzyFinder will search.
+  if !exists('g:fuzzy_roots')
+    let g:fuzzy_roots = ['.']
+  endif
+
+  " Configuration option: g:fuzzy_ceiling
+  " Specifies the maximum number of files that FuzzyFinder allows to be searched
+  if !exists('g:fuzzy_ceiling')
+    let g:fuzzy_ceiling = 10000
+  endif
+
+  " Configuration option: g:fuzzy_ignore
+  " A semi-colon delimited list of file glob patterns to ignore
+  if !exists('g:fuzzy_ignore')
+    let g:fuzzy_ignore = ""
+  endif
+
+  " Configuration option: g:fuzzy_matching_limit
+  " The maximum number of matches to return at a time. Defaults to 200, via the
+  " g:FuzzyFinderMode.TextMate.matching_limit variable, but using a global variable
+  " makes it easier to set this value.
+
+ruby << RUBY
+  def finder
+    @finder ||= begin
+      roots = VIM.evaluate("g:fuzzy_roots").split("\n")
+      ceiling = VIM.evaluate("g:fuzzy_ceiling").to_i
+      ignore = VIM.evaluate("g:fuzzy_ignore").split(/;/)
+      FuzzyFileFinder.new(roots, ceiling, ignore)
+    end
+  end
+RUBY
 
   let g:FuzzyFinderMode.TextMate = copy(g:FuzzyFinderMode.Base)
 
@@ -58,8 +96,18 @@ RUBY
     call s:HighlightPrompt(self.prompt, self.prompt_highlight)
 
     let result = []
+
+    if exists('g:fuzzy_matching_limit')
+      let l:limit = g:fuzzy_matching_limit
+    else
+      let l:limit = self.matching_limit
+    endif
+
     ruby << RUBY
-      matches = finder.find(VIM.evaluate('self.remove_prompt(a:base)'), VIM.evaluate('self.matching_limit').to_i + 1)
+      text = VIM.evaluate('self.remove_prompt(a:base)')
+      limit = VIM.evaluate('l:limit').to_i
+
+      matches = finder.find(text, limit)
       matches.sort_by { |a| [-a[:score], a[:path]] }.each_with_index do |match, index|
         word = match[:path]
         abbr = "%2d: %s" % [index+1, match[:abbr]]
@@ -67,6 +115,7 @@ RUBY
         VIM.evaluate("add(result, { 'word' : #{word.inspect}, 'abbr' : #{abbr.inspect}, 'menu' : #{menu.inspect} })")
       end
 RUBY
+
     if empty(result) || len(result) >= self.matching_limit
       call s:HighlightError()
     endif
@@ -99,3 +148,4 @@ end "}}}
 call InstantiateTextMateMode()
 
 endif
+

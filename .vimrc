@@ -43,6 +43,8 @@ augroup myfiletypes
   autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
 augroup END
 let g:proj_flags="imstg"
-nmap <silent> <Leader>P :Project<CR>
+nmap <silent> <Leader>p :NERDTreeToggle<CR>
 map <leader>t :FuzzyFinderTextMate<CR>
+let g:fuzzy_ceiling=50000
+let g:fuzzy_match_limit=50
 
