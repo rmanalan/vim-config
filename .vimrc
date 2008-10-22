@@ -1,3 +1,35 @@
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,perl,tex set shiftwidth=2
+ 
+autocmd FileType c,cpp,java,javascript,python,xml,xhtml,html set shiftwidth=2
+ 
+augroup filetypedetect
+	au! BufNewFile,BufRead *.ch setf cheat
+	au BufNewFile,BufRead *.liquid setf liquid
+	au! BufRead,BufNewFile *.haml setfiletype haml
+	autocmd BufNewFile,BufRead *.yml setf eruby
+augroup END
+ 
+autocmd BufNewFile,BufRead *_test.rb source ~/.vim/ftplugin/shoulda.vim
+"use \rci in normal mode to indent ruby code,should install kode ,sudo gem
+"install kode
+nmap <leader>rci :%!ruby-code-indenter<cr>
+ 
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+" Load matchit (% to bounce from do to end, etc.)
+runtime! plugin/matchit.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set nocompatible          " We're running Vim, not Vi!
 "set gfn=Bitstream\ Vera\ Sans\ Mono:h11
 set guifont=Monaco:h10
@@ -46,5 +78,5 @@ let g:proj_flags="imstg"
 nmap <silent> <Leader>p :NERDTreeToggle<CR>
 map <leader>t :FuzzyFinderTextMate<CR>
 let g:fuzzy_ceiling=50000
-let g:fuzzy_match_limit=50
+let g:fuzzy_match_limit=25
 
