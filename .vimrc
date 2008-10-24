@@ -54,7 +54,8 @@ imap <c-s> <esc><c-s>
 set guioptions-=T
 if has("gui_running")
     set transparency=7
-    colorscheme vibrantink
+    colorscheme candycode
+    "colorscheme lettuce
     set lines=45
     set columns=115
     syntax on                 " Enable syntax highlighting
@@ -77,6 +78,6 @@ augroup END
 let g:proj_flags="imstg"
 nmap <silent> <Leader>p :NERDTreeToggle<CR>
 map <leader>t :FuzzyFinderTextMate<CR>
-let g:fuzzy_ceiling=50000
-let g:fuzzy_match_limit=25
-
+let g:fuzzy_ceiling=20000
+let g:fuzzy_matching_limit=20
+se cursorline
