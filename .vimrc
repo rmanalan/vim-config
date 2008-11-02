@@ -31,7 +31,7 @@ runtime! plugin/matchit.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nocompatible          " We're running Vim, not Vi!
-"set guifont=Bitstream\ Vera\ Sans\ Mono 9
+"set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
 set guifont=Monaco:h10
 set guitablabel=%M%t
 set nobackup
