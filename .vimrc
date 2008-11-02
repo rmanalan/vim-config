@@ -31,7 +31,7 @@ runtime! plugin/matchit.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nocompatible          " We're running Vim, not Vi!
-"set gfn=Bitstream\ Vera\ Sans\ Mono:h11
+"set guifont=Bitstream\ Vera\ Sans\ Mono 9
 set guifont=Monaco:h10
 set guitablabel=%M%t
 set nobackup
@@ -78,6 +78,9 @@ augroup END
 let g:proj_flags="imstg"
 nmap <silent> <Leader>p :NERDTreeToggle<CR>
 map <leader>t :FuzzyFinderTextMate<CR>
+map <leader>b :FuzzyFinderBuffer<CR>
+map <leader>] :FuzzyFinderMruFile<CR>
+map <leader>b :FuzzyFinderBuffer<CR>
 let g:fuzzy_ceiling=20000
-let g:fuzzy_matching_limit=20
+let g:fuzzy_matching_limit=25
 se cursorline
