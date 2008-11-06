@@ -81,6 +81,8 @@ map <leader>t :FuzzyFinderTextMate<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>] :FuzzyFinderMruFile<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
+map <leader> :FuzzyFinderBuffer<CR>
+map ,t :Rake<CR>
 let g:fuzzy_ceiling=20000
 let g:fuzzy_matching_limit=25
 se cursorline
