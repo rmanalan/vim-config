@@ -9,6 +9,7 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,perl,tex set shiftwidth=2
  
 autocmd FileType c,cpp,java,javascript,python,xml,xhtml,html set shiftwidth=2
+autocmd FileType c,cpp,java,php,rb,erb,yml,txt,README autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
  
 augroup filetypedetect
 	au! BufNewFile,BufRead *.ch setf cheat
@@ -36,6 +37,7 @@ set guifont=Monaco:h10
 set guitablabel=%M%t
 set nobackup
 set nowritebackup
+set noswapfile
 set path=$PWD/public/**,$PWD/**
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
@@ -57,13 +59,13 @@ if has("gui_running")
     colorscheme candycode
     "colorscheme lettuce
     set lines=45
-    set columns=115
-    syntax on                 " Enable syntax highlighting
-    set noantialias
+    set columns=150
 else
-"    set term=ansi
-    syntax on
+    "set term=ansi
+    set mouse=a
 endif
+set antialias
+syntax on
 
 " Load matchit (% to bounce from do to end, etc.)
 runtime! macros/matchit.vim
@@ -77,12 +79,25 @@ augroup myfiletypes
 augroup END
 let g:proj_flags="imstg"
 nmap <silent> <Leader>p :NERDTreeToggle<CR>
-map <leader>t :FuzzyFinderTextMate<CR>
+map <leader><leader> :FuzzyFinderTextMate<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
+map <leader>r :FuzzyFinderTextMateRefreshFiles<CR>
 map <leader>] :FuzzyFinderMruFile<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
 map <leader> :FuzzyFinderBuffer<CR>
-map ,t :Rake<CR>
+map ,r :w<CR>:!ruby %<CR>
 let g:fuzzy_ceiling=20000
-let g:fuzzy_matching_limit=25
+let g:fuzzy_enumerating_limit=25
+let g:fuzzy_ignore = "*.png,*.jpg,*.gif,*.log"
 se cursorline
+set wildchar=<Tab> wildmenu wildmode=full
+set wildcharm=<C-Z>
+nnoremap ,, :b <C-Z>
+let NERDTreeMouseMode=2
+let NERDTreeWinPos="right"
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=1
+vmap gb :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<")<CR>,<C-R>=line("'>") <CR>p<CR>
+
