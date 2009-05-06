@@ -17,8 +17,8 @@
 
 syntax on
 filetype indent on
-set shiftwidth=4 expandtab smarttab incsearch
+set shiftwidth=2 expandtab smarttab incsearch
 augroup railstoolkit
   autocmd!
-  autocmd FileType ruby,yaml,haml,sass set autoindent shiftwidth=2 softtabstop=2 expandtab number smarttab incsearch
+  autocmd FileType txt,html,ruby,yaml,haml,sass set autoindent shiftwidth=2 softtabstop=2 expandtab number smarttab incsearch
 augroup END

@@ -53,4 +53,4 @@ exec "Snippet ril render :inline => \"".st.et."\", :locals => { ".st.et." => \""
 exec "Snippet rtl render :text => \"".st.et."\", :layout => \"".st.et."\"".st.et
 exec "Snippet reca redirect_to :controller => \"".st."items".et."\", :action => \"".st."list".et."\"".st.et
 exec "Snippet pe <%= ".st.et." %>"
-exec "Snippet pr <%- ".st.et." -%>"
+exec "Snippet pr <%- ".st.et." %>"

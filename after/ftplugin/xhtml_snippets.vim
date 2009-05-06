@@ -17,7 +17,7 @@ exec "Snippet h5 <h5>".st.et."</h5>".st.et
 exec "Snippet h6 <h6>".st.et."</h6>".st.et
 exec "Snippet fieldset <fieldset><CR>".st.et."<CR></fieldset>".st.et
 exec "Snippet noscript <noscript><CR>".st.et."<CR></noscript>".st.et
-exec "Snippet ul <ul ".st.et."><CR>".st.et."<CR></ul>".st.et
+exec "Snippet ul <ul".st.et."><CR>".st.et."<CR></ul>".st.et
 exec "Snippet xml <?xml version=\"1.0\" encoding=\"iso-8859-1\"?><CR><CR>".st.et
 exec "Snippet body <body id=\"".st.et."\" ".st.et."><CR>".st.et."<CR></body>".st.et
 exec "Snippet legend <legend align=\"".st.et."\" accesskey=\"".st.et."\"><CR>".st.et."<CR></legend>".st.et
@@ -31,6 +31,7 @@ exec "Snippet td <td ".st.et.">".st.et."</td>".st.et
 exec "Snippet dt <dt>".st.et."<CR></dt><CR><dd>".st.et."</dd>".st.et
 exec "Snippet tfoot <tfoot><CR>".st.et."<CR></tfoot>".st.et
 exec "Snippet div <!-- begin div.".st."id".et." --><CR><div id=\"".st."id".et."\"><CR>".st.et."<CR></div><CR><!-- end div.".st."id".et." --><CR>".st.et
+exec "Snippet span <span>".st.et."</span>"
 exec "Snippet ol <ol ".st.et."><CR>".st.et."<CR></ol>".st.et
 exec "Snippet txtarea <textarea id=\"".st."ID".et."\" name=\"".st."Name".et."\" rows=\"".st.et."\" cols=\"".st.et."\" tabindex=\"".st.et."\" ".st.et.">".st.et."</textarea>".st.et
 exec "Snippet mailto <a href=\"mailto:".st.et."?subject=".st.et."\">".st.et."</a>".st.et
@@ -46,3 +47,10 @@ exec "Snippet select <select id=\"".st."ID".et."\" name=\"".st."Name".et."\" siz
 exec "Snippet style <style type=\"text/css\" media=\"".st."screen".et."\"><CR>/* <![CDATA[ */<CR>".st.et."<CR>/* ]]> */<CR></style><CR>".st.et
 exec "Snippet divheader <!-- Begin HeaderDiv:: --><CR><div id=\"HeaderDiv\"><CR><!--logo in background --><CR><h1>".st."CompanyName".et."</h1><CR></div><CR><!-- End HeaderDiv:: --><CR>".st.et
 exec "Snippet base <base href=\"".st.et."\" ".st.et."/>".st.et
+exec "Snippet pe <%= ".st.et." %>"
+exec "Snippet pr <%- ".st.et." %>"
+exec "Snippet li <li>".st.et."</li>".st.et
+exec "Snippet p <p>".st.et."</p>".st.et
+exec "Snippet dl <dl><CR>".st.et."</dl>"
+exec "Snippet dt <dt>".st.et."</dt>"
+exec "Snippet dd <dd>".st.et."</dd>"

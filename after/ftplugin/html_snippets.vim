@@ -55,3 +55,5 @@ exec "Snippet h1 <h1 id=\"".st.et."\">".st.et."</h1>".st.et
 exec "Snippet input <input type=\"".st.et."\" name=\"".st.et."\" value=\"".st.et."\" ".st.et."/>".st.et
 exec "Snippet style <style type=\"text/css\" media=\"screen\"><CR>/* <![CDATA[ */<CR>".st.et."<CR>/* ]]> */<CR></style><CR>".st.et
 exec "Snippet base <base href=\"".st.et."\"".st.et." />".st.et
+exec "Snippet pe <%= ".st.et." %>"
+exec "Snippet pr <%- ".st.et." %>"
