@@ -1,6 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/richmanalang/dev/iccd/.git/hooks'
-let g:netrw_dirhist_2='/Users/richmanalang/dev/gitosis-admin/keydir'
-let g:netrw_dirhist_3='/Users/richmanalang/dev/iccd/app/models'
-let g:netrw_dirhist_4='/Users/richmanalang/dev/rails23'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/rich/.rvm/gems/ree-1.8.7-2010.02/gems/ruby-openid-2.1.8'
+let g:netrw_dirhist_2='/Users/rich'
